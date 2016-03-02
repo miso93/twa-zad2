@@ -135,7 +135,7 @@
         });
     });
 </script>
-<div class="modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="aaa"
+<div class="modal fade" id="edit_modal" tabindex="-1" role="dialog"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content"></div>
