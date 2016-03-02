@@ -1,0 +1,51 @@
+body,html {
+    background-color: #eaeaea;
+    color: #303233;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+}
+.container {
+    background: #FFFFFF;
+}
+/*.dataTables_length {*/
+    /*width: 50%;*/
+/*}*/
+.dataTables_filter {
+    width: 50%;
+}
+.dataTables_length {
+    width: 50%;
+}
+.dataTables_length .form-control,
+.dataTables_filter .form-control {
+    display: inline-block;
+    width: auto;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+.form-control:focus {
+    border: 1px solid #a5a5a5;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.3);
+}
+.action-edit,
+.action-remove {
+    font-size: 18px;
+    margin-right: 10px;
+}
+.action-edit {
+    color: #64696c;
+}
+.action-edit:hover,
+.action-edit:focus {
+    color: #3e4143;
+}
+.action-remove {
+    color: #bb444b;
+}
+.action-remove:hover,
+.action-remove:focus {
+    color: #bb0638;
+}
+.dataTables_wrapper {
+    margin-bottom: 40px;
+}
