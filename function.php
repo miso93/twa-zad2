@@ -203,6 +203,9 @@ JOIN oh ON oh.id_OH = u.ID_OH WHERE u.id_person=:id_person";
     }
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $method = $_GET['method'];
+        $id_person = isset($_GET['id_person']) ? $_GET['id_person'] : '';
+        $id_um = isset($_GET['id_um']) ? $_GET['id_um'] : '';
+
         if (isset($page) && $page == "action" && isset($method) && $method == "delete" && isset($id_person)) {
             $query = "DELETE FROM osoby WHERE id_person=:id_person";
             $stmt = $pdo->prepare($query);
@@ -250,11 +253,31 @@ JOIN oh ON oh.id_OH = u.ID_OH WHERE u.id_person=:id_person";
 
             header('Location: /sportovec?id='.$_POST['id_person']);
         }
+
+        if (isset($page) && $page == "action" && isset($method) && $method == "create" && $_GET['model'] == "person") {
+            var_dump($_POST);
+            $query = "INSERT INTO osoby VALUES(0 ,:name, :surname, :birthDay, :birthPlace, :birthCountry, :deathDay, :deathPlace, :deathCountry)";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':name', $_POST['name']);
+            $stmt->bindParam(':surname', $_POST['surname']);
+            $stmt->bindParam(':birthDay', $_POST['birthDay']);
+            $stmt->bindParam(':birthPlace', $_POST['birthPlace']);
+            $stmt->bindParam(':birthCountry', $_POST['birthCountry']);
+            $stmt->bindParam(':deathDay', $_POST['deathDay']);
+            $stmt->bindParam(':deathPlace', $_POST['deathPlace']);
+            $stmt->bindParam(':deathCountry', $_POST['deathCountry']);
+
+            $stmt->execute();
+
+//            header('Location: /');
+        }
     }
 
     $dbh = null;
 } catch (PDOException $e) {
+    var_dump($e);
     MessagesList::put($e->getMessage());
 } catch (Exception $e) {
+    var_dump($e);
     MessagesList::put($e->getMessage());
 }
